@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AndroidDaycare</string>
+    <string name="message_login_failed">Log in failed</string>
+    <string name="message_no_network">You are not connected to a network</string>
+</resources>
