@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -15,6 +16,8 @@ public class ParentActivity extends AppCompatActivity {
     private String userID;
     private String makeNew;
     private int parentID;
+    public final static String PARENT_ID ="edu.lawrence.AndroidDaycare.USER_ID.PARENT_ID" ;
+    public final static String USER_ID = "edu.lawrence.AndroidDaycare.USER_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,14 @@ public class ParentActivity extends AppCompatActivity {
         protected String doInBackground(Void... voids) {
             return URIHandler.doPost(uri, toSend);
         }
+        @Override
+        public void onPostExecute(String result) {
+            if ("0".equals(result)) {
+                userMessage("fail");
+            } else {
+                GoDashboard(result);
+            }
+        }
     }
 
     private class EditParentTask extends AsyncTask<Void, Void, String> {
@@ -84,11 +95,18 @@ public class ParentActivity extends AppCompatActivity {
             uri = "http://" + URIHandler.hostName + "/parent/";
             m.setId(parentID);
             this.toSend = gson.toJson(m);
-            finish();
         }
 
         @Override
         protected String doInBackground(Void... voids) { return URIHandler.doPut(uri, toSend);
+        }
+        @Override
+        public void onPostExecute(String result) {
+            if ("0".equals(result)) {
+                userMessage("fail");
+            } else {
+                GoDashboard(result);
+            }
         }
     }
 
@@ -124,6 +142,15 @@ public class ParentActivity extends AppCompatActivity {
         EditText emailField = (EditText) findViewById(R.id.emailField);
         emailField.setText(p.getEmail());
         parentID = p.getId();
+    }
+    private void GoDashboard(String parentID) {
+        Intent intent = new Intent(this, DashboardActivity.class);
+        intent.putExtra(USER_ID, userID);
+        intent.putExtra(PARENT_ID, parentID);
+        startActivity(intent);
+    }
+    private void userMessage(String message) {
+        Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
 

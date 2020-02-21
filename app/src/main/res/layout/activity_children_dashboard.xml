@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardActivity">
+    tools:context=".ChildrenDashboard">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,27 +12,26 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/create"
+            android:id="@+id/button7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="newParent"
-            android:text="Create Parent" />
+            android:text="Registry" />
 
         <Button
-            android:id="@+id/edit"
+            android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="editParent"
-            android:text="Edit Parent" />
+            android:onClick="newChild"
+            android:text="Create Child" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/button6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="childrenDashboard"
-            android:text="Children" />
+            android:onClick="editChild"
+            android:text="Edit Child" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

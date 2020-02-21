@@ -13,16 +13,16 @@ public class Provider {
     public void setCity(String city) { this.city = city; }
     public int getCapacity() { return capacity; }
     public void setCapacity(int capacity) { this.capacity = capacity; }
-    public String getMinAge() { return minAge; }
-    public void setMinAge(String minAge) { this.minAge = minAge; }
-    public String getMaxAge() { return maxAge; }
-    public void setMaxAge(String maxAge) { this.maxAge = maxAge; }
+    public int getMinAge() { return minAge; }
+    public void setMinAge(int minAge) { this.minAge = minAge; }
+    public int getMaxAge() { return maxAge; }
+    public void setMaxAge(int maxAge) { this.maxAge = maxAge; }
 
     private int id;
     private String name;
     private String address;
     private String city;
     private int capacity;
-    private String minAge;
-    private String maxAge;
+    private int minAge;
+    private int maxAge;
 }

@@ -16,6 +16,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public final static String USER_ID = "edu.lawrence.AndroidDaycare.USER_ID";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
