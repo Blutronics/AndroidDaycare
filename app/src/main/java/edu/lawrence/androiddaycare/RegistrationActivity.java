@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class RegistrationActivity extends AppCompatActivity {
     String id, position, idchi;
