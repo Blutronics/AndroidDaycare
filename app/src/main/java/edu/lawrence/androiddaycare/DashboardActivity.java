@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class DashboardActivity extends AppCompatActivity {
     private Gson gson;
@@ -23,7 +24,7 @@ public class DashboardActivity extends AppCompatActivity {
             parentID = intent.getStringExtra(ParentActivity.PARENT_ID);
         }
         setContentView(R.layout.activity_dashboard);
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
     }
     public void newParent(View view) {
         Intent intent = new Intent(this, ParentActivity.class);

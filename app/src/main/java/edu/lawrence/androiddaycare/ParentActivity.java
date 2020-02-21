@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class ParentActivity extends AppCompatActivity {
     private Gson gson;
@@ -31,7 +32,7 @@ public class ParentActivity extends AppCompatActivity {
             makeNew = intent.getStringExtra("makeNew");
         }
         setContentView(R.layout.activity_parent);
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
         if (makeNew.equals("NO")) {
             new LoadTask().execute();
         }
