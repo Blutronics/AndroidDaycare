@@ -14,8 +14,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class ChildrenActivity extends AppCompatActivity {
-    public final static String USER_ID ="edu.lawrence.AndroidDaycare.LoginActivity.USER_ID" ;
-    public final static String PARENT_ID ="edu.lawrence.AndroidDaycare.ParentActivity.PARENT_ID" ;
+   // public final static String USER_ID ="edu.lawrence.AndroidDaycare.LoginActivity.USER_ID" ;
+    //public final static String PARENT_ID ="edu.lawrence.AndroidDaycare.ParentActivity.PARENT_ID" ;
     public final static String CHILDREN_ID="edu.lawrence.AndroidDaycare.ChildrenActivity.CHILDREN_ID" ;
     private Gson gson;
     private String userID,parentID, name, parent, birthday, idchi, year, month, date;
@@ -27,8 +27,8 @@ public class ChildrenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_children);
         Intent intent = getIntent();
         idchi=intent.getStringExtra(ChildrenDashboard.CHILDREN_ID);
-        userID = intent.getStringExtra(USER_ID);
-        parentID=intent.getStringExtra(PARENT_ID);
+        userID = intent.getStringExtra(LoginActivity.USER_ID);
+        parentID=intent.getStringExtra(ParentActivity.PARENT_ID);
 
         if(idchi == null)
         {name="";birthday="MM/DD/YYYY";}
@@ -39,7 +39,7 @@ public class ChildrenActivity extends AppCompatActivity {
     }
     protected void onSaveInstanceState(Bundle arg0) {
         super.onSaveInstanceState(arg0);
-        arg0.putString(USER_ID, userID);
+        arg0.putString(LoginActivity.USER_ID, userID);
         arg0.putString(CHILDREN_ID, idchi);
     }
 
@@ -99,11 +99,7 @@ public class ChildrenActivity extends AppCompatActivity {
         }
         @Override
         public void onPostExecute(String result) {
-            if ("0".equals(result)) {
-                userMessage("failed to login");
-            } else {
-                GoBack(result);
-            }
+finish();
         }
     }
 
@@ -119,19 +115,12 @@ public class ChildrenActivity extends AppCompatActivity {
         }
         @Override
         public void onPostExecute(String result) {
-            if ("0".equals(result)) {
-                userMessage("failed to login");
-            } else {
-                GoBack(result);   }
+            finish();
         }
     }
 
     private void userMessage(String message) {
         Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT).show();
     }
-    private void GoBack(String userId) {
-        Intent intent = new Intent(ChildrenActivity.this, ChildrenActivity.class);
-        intent.putExtra(USER_ID, userId);
-        startActivity(intent);
-    }
+
 }

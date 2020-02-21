@@ -14,9 +14,9 @@ import java.sql.Date;
 public class RegistrationActivity extends AppCompatActivity {
     String id, position, idchi;
     String sm, sd, sy, em, ed, ey;
-    public final static String POSITION="com.example.samsung1.hw6.ChildrenProfile.POSITION";
-    public final static String USER_ID ="com.example.samsung1.hw6.Login.USER_ID" ;
-    public final static String PARENT_ID ="com.example.samsung1.hw6.ParentProfiles.PARENT_ID" ;
+    public final static String POSITION="com.example.samsung1.hw6.ChildrenDashboard.POSITION";
+    public final static String USER_ID ="edu.lawrence.AndroidDaycare.LoginActivity.USER_ID" ;
+    public final static String PARENT_ID ="edu.lawrence.AndroidDaycare.ParentActivity.PARENT_ID" ;
     private Provider[] p = null;
     private int selected_p = -1;
     private Gson gson;
@@ -62,9 +62,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         ////////////get children info and do math to get minage and maxage after registrated///////////
     }
-    public java.sql.Date convertJavaDateToSqlDate(java.util.Date date) {
-        return new java.sql.Date(date.getTime());
-    }
+
     private void getchildren(String json)
     {   Child[] chi = gson.fromJson(json,Child[].class);//list[]--> server
         String[] childrenStrs = new String[chi.length];
@@ -72,6 +70,6 @@ public class RegistrationActivity extends AppCompatActivity {
         Date birth;
         for(int n = 0;n!= idchil;n++) {
             Child child = chi[n];
-            birth= convertJavaDateToSqlDate(child.getBirthday());  }
+            birth= child.getBirthday();  }
 
     }}

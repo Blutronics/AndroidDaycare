@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -93,22 +92,26 @@ public class ChildrenDashboard extends AppCompatActivity {
         intent.putExtra(LoginActivity.USER_ID, userID);
         intent.putExtra("makeNew", "YES");
         intent.putExtra(ParentActivity.PARENT_ID, parentID);
+        intent.putExtra(CHILDREN_ID,-1);
         startActivity(intent);
     }
 
     public void editChild(View view) {
+        if (selected_children != -1) {
+            Child c = chi[selected_children];
         Intent intent = new Intent(this, ChildrenActivity.class);
         intent.putExtra(LoginActivity.USER_ID, userID);
         intent.putExtra(ParentActivity.PARENT_ID, parentID);
+        intent.putExtra(CHILDREN_ID,c.getId());
         intent.putExtra("makeNew", "NO");
-        startActivity(intent);
+        startActivity(intent);}
 
     }
 
     public void GoRegistry(View view) {
         if (selected_children != -1) {
             Child c = chi[selected_children];
-            Intent intent = new Intent(this, registration.class);
+            Intent intent = new Intent(this, RegistrationActivity.class);
             intent.putExtra(USER_ID, userID);
             intent.putExtra(CHILDREN_ID, c.getId());
             startActivity(intent);
