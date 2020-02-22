@@ -11,11 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class ChildrenDashboard extends AppCompatActivity {
-    public final static String USER_ID = "com.example.samsung1.hw6.Login.USER_ID";
-    public final static String CHILDREN_ID = "com.example.samsung1.hw6.ChildrenProfile.CHILDREN_ID";
-    public final static String PARENT_ID = "com.example.samsung1.hw6.ParentProfiles.PARENT_ID";
+    public final static String CHILDREN_ID = "edu.lawrence.AndroidDaycare.CHILDREN_ID";
     private Child[] chi = null;
     private int selected_children = -1;
     private Gson gson;
@@ -32,7 +31,7 @@ public class ChildrenDashboard extends AppCompatActivity {
             parentID = intent.getStringExtra(ParentActivity.PARENT_ID);
         }
         setContentView(R.layout.activity_children_dashboard);
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
         new ChildTask().execute();
     }
     @Override
@@ -112,8 +111,9 @@ public class ChildrenDashboard extends AppCompatActivity {
         if (selected_children != -1) {
             Child c = chi[selected_children];
             Intent intent = new Intent(this, RegistrationActivity.class);
-            intent.putExtra(USER_ID, userID);
+            intent.putExtra(LoginActivity.USER_ID, userID);
             intent.putExtra(CHILDREN_ID, c.getId());
+            intent.putExtra(ParentActivity.PARENT_ID, parentID);
             startActivity(intent);
         }
     }
