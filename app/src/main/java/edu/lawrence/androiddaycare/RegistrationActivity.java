@@ -54,7 +54,7 @@ public class RegistrationActivity extends AppCompatActivity {
         arg0.putString(LoginActivity.USER_ID, userID);
     }
 
-    private void register(View view) throws ParseException {
+    protected void register(View view) throws ParseException {
         Provider selected = p[selected_provider];
         EditText Start = findViewById(R.id.start);
         String s = Start.getText().toString();
